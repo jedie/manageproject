@@ -1,16 +1,16 @@
 import sys
 
-import rich_click as click
+
 from cli_base.cli_tools import git_history
 from cli_base.cli_tools.verbosity import OPTION_KWARGS_VERBOSE, setup_logging
+from cli_base.tyro_commands import TyroVerbosityArgType
 from rich import print  # noqa
 
-from manageprojects.cli_dev import cli
+from manageprojects.cli_dev import app
 
 
-@cli.command()
-@click.option('-v', '--verbosity', **OPTION_KWARGS_VERBOSE)
-def update_readme_history(verbosity: int):
+@app.command
+def update_readme_history(verbosity: TyroVerbosityArgType):
     """
     Update project history base on git commits/tags in README.md
 
